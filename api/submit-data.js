@@ -9,8 +9,8 @@ module.exports = async (req, res) => {
     const data = req.body;
 
     // const isEdit = req.headers.referer && req.headers.referer.includes('edit');
-    const isEdit = req.headers.referer;
-    console.log(isEdit);
+    const isEdit = req.headers;
+    console.log("isEdit: ",isEdit);
 
     try {
         // Send data to Zapier webhook
