@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
 
     // const isEdit = req.headers.referer && req.headers.referer.includes('edit');
     // const isEdit = req;
-    console.log("isEdit: ",data);
+    console.log(data);
 
     try {
         // Send data to Zapier webhook
@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
         // Check if the Zapier response was successful
         if (zapierResponse.ok) {
             // Redirect to the thank-you page on success
-            res.writeHead(302, { Location: 'https://thank-you-page-lac.vercel.app/thank_you_page.html' });
+            // res.writeHead(302, { Location: 'https://thank-you-page-lac.vercel.app/thank_you_page.html' });
             res.end();
         } else {
             // If Zapier response was an error, redirect to a error page
