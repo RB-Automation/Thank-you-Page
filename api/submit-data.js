@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 module.exports = async (req, res) => {
     // Check if the request method is POST
     if (req.method !== 'POST') {
