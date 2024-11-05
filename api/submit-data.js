@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
     const data = req.body;
 
     // const isEdit = req.headers.referer && req.headers.referer.includes('edit');
-    const isEdit = req.headers;
+    const isEdit = req;
     console.log("isEdit: ",isEdit);
 
     try {
