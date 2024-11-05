@@ -10,6 +10,10 @@ module.exports = async (req, res) => {
     // Get data from the request body
     const data = req.body;
 
+    // const isEdit = req.headers.referer && req.headers.referer.includes('edit');
+    const isEdit = req.headers.referer;
+    console.log(isEdit);
+
     try {
         // Send data to Zapier webhook
         const zapierResponse = await fetch('https://hooks.zapier.com/hooks/catch/19199524/218u67i/', {
