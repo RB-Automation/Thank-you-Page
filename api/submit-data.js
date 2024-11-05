@@ -1,3 +1,5 @@
+const fetch = require('node-fetch');
+
 module.exports = async (req, res) => {
     // Check if the request method is POST
     if (req.method !== 'POST') {
@@ -8,9 +10,28 @@ module.exports = async (req, res) => {
     // Get data from the request body
     const data = req.body;
 
-    // Log the received data to the console (for testing purposes)
-    console.log('Received data:', data);
+    try {
+        // Send data to Zapier webhook
+        const zapierResponse = await fetch('https://hooks.zapier.com/hooks/catch/19199524/218u67i/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
 
-    // Respond with a success message
-    res.status(200).json({ message: 'Data received successfully', receivedData: data });
+        // Check if the Zapier response was successful
+        if (zapierResponse.ok) {
+            // Redirect to the thank-you page on success
+            res.writeHead(302, { Location: 'https://thank-you-page-lac.vercel.app/public/thank_you_page.html' });
+            res.end();
+        } else {
+            // If Zapier response was an error, redirect to a error page
+            res.writeHead(302, { Location: 'https://thank-you-page-lac.vercel.app/public/error.html' });
+            res.end();
+        }
+    } catch (error) {
+        console.error('Error sending data to Zapier:', error);
+        // Redirect to error page if there’s an error with the request
+        res.writeHead(302, { Location: 'https://thank-you-page-lac.vercel.app/public/error.html' });
+        res.end();
+    }
 };
