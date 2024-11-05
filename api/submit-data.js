@@ -23,17 +23,17 @@ module.exports = async (req, res) => {
         // Check if the Zapier response was successful
         if (zapierResponse.ok) {
             // Redirect to the thank-you page on success
-            res.writeHead(302, { Location: 'https://thank-you-page-lac.vercel.app/public/thank_you_page.html' });
+            res.writeHead(302, { Location: 'https://thank-you-page-lac.vercel.app/thank_you_page.html' });
             res.end();
         } else {
             // If Zapier response was an error, redirect to a error page
-            res.writeHead(302, { Location: 'https://thank-you-page-lac.vercel.app/public/error.html' });
+            res.writeHead(302, { Location: 'https://thank-you-page-lac.vercel.app/error.html' });
             res.end();
         }
     } catch (error) {
         console.error('Error sending data to Zapier:', error);
         // Redirect to error page if there’s an error with the request
-        res.writeHead(302, { Location: 'https://thank-you-page-lac.vercel.app/public/error.html' });
+        res.writeHead(302, { Location: 'https://thank-you-page-lac.vercel.app/error.html' });
         res.end();
     }
 };
