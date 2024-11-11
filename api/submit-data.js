@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     }
 
     // Get data from the request body
-    const data = JSON.parse(req.body);
+    const data = req.body;
 
     // Convert order_details to a string if it's an array
     if (Array.isArray(data.order_details)) {
