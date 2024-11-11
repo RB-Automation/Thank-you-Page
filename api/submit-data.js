@@ -6,11 +6,13 @@ module.exports = async (req, res) => {
     }
 
     // Get data from the request body
-    const data = req.body;
+    const data = JSON.parse(req.body);
 
-    // const isEdit = req.headers.referer && req.headers.referer.includes('edit');
-    // const isEdit = req;
-    console.log(data);
+    // Convert order_details to a string if it's an array
+    if (Array.isArray(data.order_details)) {
+        data.order_details = JSON.stringify(data.order_details);
+    }
+    console.log(data)
 
     try {
         // Send data to Zapier webhook
