@@ -10,8 +10,7 @@ module.exports = async (req, res) => {
 
     // Convert order_details to a string if it's an array
     if (Array.isArray(data.order_details)) {
-        data.order_details = JSON.stringify(data.order_details);
-        data.order_details = `${data.order_details}`
+        data.order_details = `__string__${JSON.stringify(data.order_details)}`;
     }
     console.log(data)
 
