@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
 
     // Convert order_details to a string if it's an array
     if (Array.isArray(data.order_details)) {
-        data.order_details = `"'${JSON.stringify(data.order_details)}'"`+"@@@";
+        data.order_details = JSON.stringify(data.order_details)+"yuval's String";
     }
     console.log(data)
 
