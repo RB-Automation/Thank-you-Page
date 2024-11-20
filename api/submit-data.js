@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
 
     // Convert order_details to a string if it's an array
     if (Array.isArray(data.order_details)) {
-        data.order_details = `"'${JSON.stringify(data.order_details)}'"`;
+        data.order_details = `"'${JSON.stringify(data.order_details)}'"`+"@@@";
     }
     console.log(data)
 
@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
         const zapierResponse = await fetch('https://hooks.zapier.com/hooks/catch/19199524/218u67i/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)+"@@@"
+            body: JSON.stringify(data)
         });
 
         // Check if the Zapier response was successful
