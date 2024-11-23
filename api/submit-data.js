@@ -8,9 +8,12 @@ module.exports = async (req, res) => {
     // Get data from the request body
     const data = req.body;
 
+    // Add the current date to data.time
+    data.time = new Date().toISOString();
+
     // Convert order_details to a string if it's an array
     if (Array.isArray(data.order_details)) {
-        data.order_details = "yuval's String" + JSON.stringify(data.order_details);
+        data.order_details = JSON.stringify(data.order_details);
     }
     console.log(data)
 
